@@ -6,7 +6,13 @@ require('dotenv').config();   // loads variables from .env file
 const app = express();
 
 // ── Middleware ──────────────────────────────────────
-app.use(cors());              // allows frontend to call this backend
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://cey-vacay.vercel.app',  
+  ],
+  credentials: true,
+}));            // allows frontend to call this backend
 app.use(express.json());      // lets us read JSON from request body
 
 // ── Routes (we'll fill these in next phase) ─────────
